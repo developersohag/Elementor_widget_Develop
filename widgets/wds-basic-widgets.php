@@ -62,8 +62,17 @@ class Wds_Basic_widgets extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'basic' ];
+		return [ 'wds-custom-cat' ];
 	}
+	/**add Stylesheet  Dependency in weidget */
+	public function get_style_depends(){
+		return ["wds-widget-css"];
+	}
+	/**add Javascript Dependency in weidget */
+	public function get_script_depends(){
+		return ["wds-custom-js"];
+	}
+
 
 	/**
 	 * Register oEmbed widget controls.
@@ -79,19 +88,30 @@ class Wds_Basic_widgets extends Widget_Base {
 			'content_section',
 			[
 				'label' => __( 'Content', 'wds_ele_textdomain' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				//'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$this->add_control(
-			'url',
+			'more_option',
 			[
-				'label' => __( 'URL to embed', 'wds_ele_textdomain' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'input_type' => 'url',
-				'placeholder' => __( 'https://your-link.com', 'wds_ele_textdomain' ),
+				'label' => __( 'Additional Option', 'wds_ele_textdomain' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
 			]
 		);
+
+		$this->add_control(
+			'more_options',
+			[
+				'label' => __( 'Important Note', 'wds_ele_textdomain' ),
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __('akfjlskj', 'wds_ele_textdomain'),
+				'content_class' => 'your-class',
+			]
+		);
+
+
 
 		$this->end_controls_section();
 

@@ -156,6 +156,8 @@ final class Wds_Ele_Item {
 		//add_action( 'elementor/controls/controls_registered', [ $this, 'init_controls' ] );
 		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'wds_widget_css' ] );
 		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'wds_widget_js' ] );
+		add_action('elementor/elements/categories_registered',[ $this, 'wds_category' ] );
+		
 	}
 
 	/**
@@ -298,9 +300,56 @@ public function wds_widget_css() {
 
 	public function wds_widget_js() {
 
-		wp_register_script( 'wds-widget-js', plugins_url( 'js/wds-widget.js', __FILE__ ) );
+		wp_register_script( 'wds-custom-js', plugins_url( 'js/wds-widget.js', __FILE__ ) );
+
 	}
 
-}
+	
+/**
+	 * Register catagory.
+	 *
+	 * Catagory Section
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 
-Wds_Ele_Item::instance();
+	function wds_category($wdsmanager){
+		$wdsmanager->add_category(
+			'wds-custom-cat',
+			[
+				'title' => __('WDS ELEMENTOR ADDONS', 'wds_ele_textdomain'),
+				'icon' => 'fa fa arrow-right',
+			]
+			);
+	 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}Wds_Ele_Item::instance();
