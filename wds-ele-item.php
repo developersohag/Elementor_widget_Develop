@@ -247,12 +247,13 @@ final class Wds_Ele_Item {
 
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/wds-basic-widgets.php' );
+		require_once( __DIR__ . '/widgets/wds-advance-widgets.php' );
 
 		// Register widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Wds_Basic_widgets() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Wds_advance_widgets() );
 
 	}
-
 	/**
 	 * Init Controls
 	 *
@@ -285,6 +286,7 @@ final class Wds_Ele_Item {
 public function wds_widget_css() {
 
 		wp_register_style( 'wds-widget-css', plugins_url( 'css/wds-widget.css', __FILE__ ) );
+		wp_register_style( 'wds-advance-css', plugins_url( 'css/wds-widget.css', __FILE__ ) );
 
 	}
 
